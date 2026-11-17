@@ -9,10 +9,10 @@
 | 항목 | 내용 |
 |---|---|
 | 언어 | Java |
-| JDK | OpenJDK 21.0.10 |
+| JDK | OpenJDK 21.0.10 (PyCharm 내장 JetBrains Runtime) |
 | 운영체제 | Windows 11 |
 
-JDK 17 이상이면 같은 명령으로 실행할 수 있습니다. 단일 프로세스·단일 스레드 환경을 기준으로 합니다.
+Java 8 이상의 문법만 사용했으며, `--release 8` 옵션으로도 컴파일되는 것을 확인했습니다. 과제 기준에 따라 단일 프로세스·단일 스레드 환경을 기준으로 합니다.
 
 ## 파일 구성
 
@@ -47,6 +47,7 @@ public final class AppSettings {
 }
 ```
 
+- **생성 방식:** 강의자료의 세 가지 방식(Eager, Static block, Lazy Initialization) 중 처음 요청할 때 객체를 만드는 Lazy Initialization을 썼습니다. 쓰지 않는 동안에는 객체를 만들지 않습니다. 과제 기준이 단일 스레드이므로 동기화 처리는 넣지 않았습니다.
 - **인스턴스 보관:** 유일한 객체를 `private static` 필드 `instance`에 보관합니다.
 - **생성 제한:** 생성자를 `private`으로 선언해 클래스 밖에서는 `new AppSettings()`를 쓸 수 없습니다.
 - **인스턴스 얻기:** 객체는 `getInstance()`로만 얻을 수 있습니다.
