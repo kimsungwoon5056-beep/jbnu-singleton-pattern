@@ -90,7 +90,7 @@ Try.java:3: error: AppSettings() has private access in AppSettings
 
 ## 동작 설명
 
-인스턴스는 `AppSettings` 클래스의 `private static` 필드인 `instance`에 보관되며, 이 필드는 객체마다가 아니라 클래스에 하나만 존재합니다. `getInstance()`는 `instance`가 비어 있을 때만 생성자를 호출하고, 그 뒤에는 저장된 객체를 그대로 돌려주기 때문에 반복해서 요청해도 새 객체가 만들어지지 않습니다. 생성자는 `private`이므로 다른 클래스에서 `new`로 객체를 따로 만들 수도 없습니다. Java에서 참조 타입에 `==`를 쓰면 두 변수가 같은 객체를 가리킬 때만 `true`가 되므로, `first == second`가 `true`라는 것은 두 변수가 하나의 인스턴스를 공유한다는 직접적인 근거입니다. 또한 `first`로 바꾼 값이 `second`에서 그대로 읽히고 생성자 호출 횟수가 1로 유지되는 것도 같은 결과를 보여 줍니다.
+두 변수는 하나의 인스턴스를 공유하며, 그 근거는 참조 비교 결과인 `first == second`가 `true`라는 점입니다. 인스턴스는 `AppSettings` 클래스의 `private static` 필드 `instance`에 하나만 보관됩니다. `getInstance()`는 `instance`가 비어 있을 때만 생성자를 호출하고 그 뒤에는 저장해 둔 객체를 그대로 돌려주기 때문에, 여러 번 요청해도 새 객체가 만들어지지 않습니다. 생성자도 `private`으로 막아 두어 다른 클래스에서 `new`로 객체를 따로 만들 수 없습니다. 실제로 `first`로 바꾼 값이 `second`에서 그대로 읽혔고, 생성자 호출 횟수도 끝까지 1이었습니다.
 
 ## 참고 자료
 
